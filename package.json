@@ -1,0 +1,41 @@
+{
+  "name": "metalsmith-perma",
+  "version": "1.0.0.alpha1",
+  "description": "",
+  "main": "dist/metalsmith-perma.js",
+  "module": "dist/metalsmith-perma.es.js",
+  "scripts": {
+    "build": "npm-run-all clean transpile",
+    "clean": "rm -rf dist/*",
+    "test": "BABEL_ENV=test ava ./test/*.js",
+    "transpile": "rollup -c rollup.config.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Jason Wilson <jason@scurker.com>",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^1.29.0",
+    "minimatch": "^3.0.4",
+    "slugify": "^1.2.7"
+  },
+  "devDependencies": {
+    "assert-dir-equal": "^1.1.0",
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "metalsmith": "^2.3.0",
+    "npm-run-all": "^4.1.2",
+    "regenerator-runtime": "^0.11.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.52.3",
+    "rollup-plugin-babel": "^3.0.3"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": "babel-register"
+  }
+}

@@ -1,0 +1,9 @@
+*.sublime-project
+*.sublime-workspace
+node_modules/
+reports/
+dist/
+coverage/
+.nyc_output
+*.log
+test/fixtures/**/build
