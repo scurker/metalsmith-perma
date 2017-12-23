@@ -85,7 +85,7 @@ test('should ignore permalink: false in frontmatter', async t => {
   t.notThrows(() => dirEqual('permalink-false/build', 'permalink-false/expected'));
 });
 
-test.skip('should match metadata', async t => {
+test('should match metadata', async t => {
   await metalsmith('match-metadata')
     .use(perma([
       {
@@ -102,7 +102,22 @@ test.skip('should match metadata', async t => {
   t.notThrows(() => dirEqual('match-metadata/build', 'match-metadata/expected'));
 });
 
-test.todo('should set default pattern');
+test('should use default match', async t => {
+  await metalsmith('default-match')
+    .use(perma([
+      {
+        match: { foo: 1 },
+        pattern: 'foo/:title'
+      },
+      {
+        default: true,
+        pattern: 'default/:title'
+      }
+    ]))
+    .build();
+
+  t.notThrows(() => dirEqual('default-match/build', 'default-match/expected'));
+});
 
 test('should allow frontmatter to override permalinks', async t => {
   await metalsmith('permalink-frontmatter')

@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-perma",
-  "version": "1.0.0.alpha1",
+  "version": "1.0.0-alpha1",
   "description": "",
   "main": "dist/metalsmith-perma.js",
   "module": "dist/metalsmith-perma.es.js",
@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "date-fns": "^1.29.0",
+    "deep-equal": "^1.0.1",
     "minimatch": "^3.0.4",
     "slugify": "^1.2.7"
   },

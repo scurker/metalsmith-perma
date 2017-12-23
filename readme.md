@@ -77,6 +77,44 @@ permalink: false
 ---
 ```
 
+### Matching Patterns
+
+*metalsmith-perma* allows you to have multiple sets of matching patterns against matching metadata. Works well with [metalsmith-collections](https://github.com/segmentio/metalsmith-collections)
+
+```js
+metalsmith
+  .use(collections({
+    collections({
+      posts: {
+        pattern: 'posts/*.md'
+      }
+    })
+  })
+  .use(permalinks({
+    match: { collections: ['post'] },
+    pattern: 'posts/:title'
+  }));
+```
+
+Along with pattern matching, you can create different matching patterns of permalinks by including multiple sets of options along with a `default` flag to mark the default match.
+
+```js
+metalsmith.use(permalinks([
+  {
+    match: { collections: ['post'] },
+    pattern: 'posts/:title'
+  },
+  {
+    match: { collections: ['authors'] },
+    pattern: 'authors/:name'
+  },
+  {
+    default: true,
+    pattern: ':title'
+  }
+]));
+```
+
 ## License
 
 [MIT](/license)

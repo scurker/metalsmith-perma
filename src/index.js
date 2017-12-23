@@ -1,29 +1,47 @@
+import deepEqual from 'deep-equal';
 import minimatch from 'minimatch';
 import slug from 'slugify';
+import { dirname } from 'path';
 import { format } from 'date-fns';
 import { normalizeOptions, replaceParams } from './util';
 
 // Set Timezone for date-fns since dates are always UTC
 process.env['TZ'] = 'UTC';
 
+function matches(match, data) {
+  if(!match || typeof match !== 'object') return false;
+
+  let keys = Object.keys(match);
+  for(let n = 0; n < keys.length; n++) {
+    let key = keys[n];
+    if(!deepEqual(match[key], data[key])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export default function(opts) {
 
-  let normalizedOptions = normalizeOptions(opts).map(x => (
-    Object.assign({
-      match: null,
-      extension: 'html',
-      pattern: '',
-      date: 'YYYY/MM/DD',
-      options: { lower: true }
-    }, x)
-  ));
+  let defaultOptions = {
+    match: null,
+    extension: 'html',
+    pattern: '',
+    date: 'YYYY/MM/DD',
+    options: { lower: true }
+  };
+  let normalizedOptions = normalizeOptions(opts).map(x => Object.assign({}, defaultOptions, x));
 
-  // Need to determine default match, but just use the first in the array
-  let [ defaultMatch ] = normalizedOptions;
+  const defaultMatch = normalizedOptions.find(o => !!o.default)
+    || normalizedOptions.find(o => !o.match)
+    || defaultOptions;
 
   return function(files) {
     Object.keys(files)
       .forEach(file => {
+
+        let matchedOptions = normalizedOptions.find(o => matches(o.match, files[file]));
 
         let {
           extension,
@@ -31,13 +49,20 @@ export default function(opts) {
           date,
           collections,
           options
-        } = defaultMatch;
+        } = matchedOptions || defaultMatch;
 
-        if(!minimatch(file, `**/*.${extension}`)) {
+        if(!minimatch(file, `**/*.${extension}`) || !pattern) {
+          let data = files[file];
+          if(file.endsWith(extension)) {
+            data.path = dirname(file);
+          } else {
+            data.path = file;
+          }
           return;
         }
 
         let data = files[file]
+          , clonedData = Object.assign({}, data)
           , { permalink } = data
           , path
           , sluggedPath;
@@ -49,15 +74,15 @@ export default function(opts) {
         }
 
         // Convert date values to formatted strings
-        Object.keys(data)
+        Object.keys(clonedData)
           .forEach(key => {
-            let value = data[key];
+            let value = clonedData[key];
             if(value instanceof Date) {
-              data[key] = format(value, date);
+              clonedData[key] = format(value, date);
             }
           });
 
-        path = replaceParams(pattern, data);
+        path = replaceParams(pattern, clonedData);
 
         sluggedPath = (path.split(/[\\/]/) || []).map(segment => slug(segment, options)).join('/');
 

@@ -14,6 +14,8 @@ export default {
     'minimatch',
     'slugify',
     'date-fns',
+    'path',
+    'deep-equal'
   ],
   output: [
     {
