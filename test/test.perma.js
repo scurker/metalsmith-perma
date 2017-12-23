@@ -121,8 +121,16 @@ test('should use default match', async t => {
 
 test('should allow frontmatter to override permalinks', async t => {
   await metalsmith('permalink-frontmatter')
-    .use(perma({ pattern: ':title '}))
+    .use(perma({ pattern: ':title'}))
     .build();
 
   t.notThrows(() => dirEqual('permalink-frontmatter/build', 'permalink-frontmatter/expected'));
+});
+
+test('should not include invalid url characters', async t => {
+  await metalsmith('valid-url')
+    .use(perma({ pattern: ':title' }))
+    .build();
+
+  t.notThrows(() => dirEqual('valid-url/build', 'valid-url/expected'));
 });

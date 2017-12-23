@@ -41,7 +41,7 @@ metalsmith.use(permalinks({
 }));
 ```
 
-Slugify `options` defaults to `{ lower: true }`, but you can view a [full list of options](https://github.com/simov/slugify#options).
+Slugify `options` defaults to `{ lower: true, remove: /!$'"*+,;=?%/ }`, but you can view a [full list of options](https://github.com/simov/slugify#options).
 
 
 ### Dates

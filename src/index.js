@@ -29,7 +29,7 @@ export default function(opts) {
     extension: 'html',
     pattern: '',
     date: 'YYYY/MM/DD',
-    options: { lower: true }
+    options: { lower: true, remove: /[!$'"*+,;=?%]/ }
   };
   let normalizedOptions = normalizeOptions(opts).map(x => Object.assign({}, defaultOptions, x));
 
