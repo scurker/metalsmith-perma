@@ -1,4 +1,7 @@
 # metalsmith-perma
+[![Build Status](https://travis-ci.org/scurker/metalsmith-perma.svg?branch=master)](https://travis-ci.org/scurker/metalsmith-perma)
+[![Coverage Status](https://coveralls.io/repos/scurker/metalsmith-perma/badge.svg?branch=master&service=github)](https://coveralls.io/github/scurker/metalsmith-perma?branch=master)
+[![npm](https://img.shields.io/npm/v/metalsmith-perma.svg?style=flat)](https://www.npmjs.com/package/metalsmith-perma)
 
 `metalsmith-perma` is an alternative to [`metalsmith-permalinks`](https://github.com/segmentio/metalsmith-permalinks) for applying permalinks to your static content.
 
