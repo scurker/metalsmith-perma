@@ -11,6 +11,9 @@
     "test": "BABEL_ENV=test ava ./test/*.js",
     "transpile": "rollup -c rollup.config.js"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "files": [
     "dist"
   ],
