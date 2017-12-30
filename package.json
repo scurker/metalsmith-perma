@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npm-run-all clean transpile",
     "clean": "rm -rf dist/*",
+    "coverage": "BABEL_ENV=test nyc ava ./test/*.js",
     "test": "BABEL_ENV=test ava ./test/*.js",
     "transpile": "rollup -c rollup.config.js"
   },
@@ -30,6 +31,7 @@
     "babel-register": "^6.26.0",
     "metalsmith": "^2.3.0",
     "npm-run-all": "^4.1.2",
+    "nyc": "^11.4.1",
     "regenerator-runtime": "^0.11.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.52.3",
