@@ -5,9 +5,11 @@
   "main": "dist/metalsmith-perma.js",
   "module": "dist/metalsmith-perma.es.js",
   "scripts": {
-    "build": "npm-run-all clean transpile",
+    "build": "npm-run-all clean lint transpile",
     "clean": "rm -rf dist/*",
     "coverage": "BABEL_ENV=test nyc ava ./test/*.js",
+    "lint": "eslint .",
+    "prepare": "npm run build",
     "test": "BABEL_ENV=test ava ./test/*.js",
     "transpile": "rollup -c rollup.config.js"
   },
@@ -32,6 +34,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "eslint": "^4.14.0",
     "metalsmith": "^2.3.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^11.4.1",

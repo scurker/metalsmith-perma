@@ -47,7 +47,6 @@ export default function(opts) {
           extension,
           pattern,
           date,
-          collections,
           options
         } = matchedOptions || defaultMatch;
 

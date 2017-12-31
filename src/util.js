@@ -8,6 +8,7 @@ function parse(pattern) {
   let match
     , matches = [];
 
+  // eslint-disable-next-line no-cond-assign
   while(match = paramsRegex.exec(pattern)) {
     let [ pattern, key ] = match;
     matches.push({ pattern, key });
