@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-perma",
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0-rc1",
   "description": "Altenative to metalsmith-permalinks for metalsmith",
   "main": "dist/metalsmith-perma.js",
   "module": "dist/metalsmith-perma.es.js",
