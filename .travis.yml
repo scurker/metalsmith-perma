@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 'node'
+- node
 - '8'
 before_install:
 - npm install -g coveralls
@@ -12,5 +12,15 @@ cache:
   directories:
   - node_modules
 after_success:
-  - npm run coverage
-  - npm run coverage:report
+- npm run coverage
+- npm run coverage:report
+deploy:
+  provider: npm
+  skip_cleanup: true
+  api_key:
+    secure: tra4rQgTscHjsAcZ2ThHCKO0mnzwYnfEcU9Dau57iVymGuc5tS8KDmRQyXIrDdRNmt656Blo8ebR6nbkQlVQ5Vl/3p7D7y+17IDUfqKxuyvVErYsJcQI/fPEtoVmtOAvw0lA2VOBlZ5sMIHQAEwAe8m6TPmha8n/R1vmEuy1nfl9aSD7fWYIYPkHRAl7oddcUk6wyQHCx46j13xQXqezjee3EcDNBcO75iPH85376YfxqOtpQ+wLnSWvqAAeWKsnSROoDjS24lzNL0IWUw+gAIvXBTVobK4NEylbB/K7Fbq23UFnBP2nKbvJThPs5SPoR41FE7MyhCox4N+2Ky0qNrN8wMQyMTOlD59sE3NVE8ExHbgUiFh55yA8VfwlXDjJDP4fiJkxwHVRJ78pzatlLYi58K1y/kZ8SXrHsF3mqzVyCqUQe/8KJYseJz2olLVTwLKBETe3FjlzIqXc759G1HByIFW9CKfXQ27DPb1JK5H/pSGJ5xMQIgtxvmmsBwJW2sa3VkKniIganVci6vqEJPeZM1jrQsmjBulNgiHcUtrpyyTh1alo7lvirVFaLjrS/VmRf6tKEsplS8NKQB9QGfQnZSkPxPeiy51cbP7NfVgKfwUPU38FpHuWKJ41U0xj/tSjJz7Mcn4IaEyXv2SLev3eyei4CO/mDyE2ZO05EQ8=
+  email:
+    secure: GIsqHBHA0gmkCr68v9Zg1XqR+hDtWGnkaZRHysDkt9zXB6zq3CH78bDDh32ee2qFCoXZstZ9HunDP4h7rQVL22iyQcrfJxECoHNlze6LTi16IRsAQSQ2S2DH+2S4HxTQ/lBn/UVy/+DExK2aYOHwFyj90hyVbdMC9u4tIvjvYLYyL0Fot1xXW9Pn0fPNkEDJwkTdaT3sa3kBF9j50tNKHrYmSNjaWswr9tVtItXVSt4XJM70rzQ7xdQJ4+PWYURDoUxgRyyv/md3dKMCA76HkjwggrWVuuT0S46BNpsPjmTXBONpL7z4M5VFTrAuE4Wg7msPwMcfWykRzrLPURmjCcJ+wU3AtFXPbfk9qtESvPKPp/2Wtuz9hj/rBRUExmjBWPb4ppvfgIUcp2Y9VBf5zZOj501jiexQQJ1DopBnIpC0cpZrny3fOqFWRiojGdnBz0OBeMcBgf1V7IwDlyU1n2fHEu0hXI/ogIcFmSGa0iQ7FAH1SECCcYdwfqPo5ES9GXA1kZOzgrddGjwBdfgJsXdTOFwwltoqhsz3lwRiM9CMKfbLrLSwhSqVeBKfgpmGa4Bgs8rAmcQDoCTzHUzIQDbyhvVu5LUZcY4GWvhxArY7KTaMfwiV1BcZPLVNZ8TWxZuSJJ739NlaNnL3duFrJXwtQS7Q4Rp+j54P9OlyxLI=
+  on:
+    tags: true
+    node: node
