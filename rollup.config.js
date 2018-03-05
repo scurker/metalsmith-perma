@@ -10,13 +10,7 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  external: [
-    'minimatch',
-    'slugify',
-    'date-fns',
-    'path',
-    'deep-equal'
-  ],
+  external: [...Object.keys(pkg.dependencies), 'path'],
   output: [
     {
       format: 'es',
