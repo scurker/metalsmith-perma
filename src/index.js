@@ -22,6 +22,9 @@ function matches(match, data) {
   return true;
 }
 
+// Replace all . with -
+slug.extend({ '.': '-' });
+
 export default function(opts) {
 
   let defaultOptions = {
