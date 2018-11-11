@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-perma",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Altenative to metalsmith-permalinks for metalsmith",
   "main": "dist/metalsmith-perma.js",
   "module": "dist/metalsmith-perma.es.js",
@@ -53,6 +53,8 @@
     "rollup-plugin-babel": "^4.0.3"
   },
   "ava": {
-    "require": ["@babel/register"]
+    "require": [
+      "@babel/register"
+    ]
   }
 }
