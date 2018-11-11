@@ -1,20 +1,26 @@
 {
-  presets: [
-    ["babel-preset-env", {
-      targets: {
-        node: 4
-      },
-      modules: false
-    }]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": 4
+        },
+        "modules": false
+      }
+    ]
   ],
-  env: {
-    test: {
-      presets: [
-        ["babel-preset-env", {
-          targets: {
-            node: "current"
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
           }
-        }]
+        ]
       ]
     }
   }
